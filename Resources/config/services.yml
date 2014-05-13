@@ -6,6 +6,7 @@ parameters:
 services:
     code_lovers_doctrine_encrypt.encryptor.aes256:
         class: %code_lovers_doctrine_encrypt.encryptor.aes256.class%
+        lazy: true
 
     code_lovers_doctrine_encrypt.listener.orm:
         class: %code_lovers_doctrine_encrypt.listener.orm.class%
