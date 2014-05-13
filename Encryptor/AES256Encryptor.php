@@ -28,7 +28,7 @@ class AES256Encryptor implements EncryptorInterface
      */
     public function encrypt($plain, $key)
     {
-        return base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $plain, MCRYPT_MODE_ECB, $this->initVector));
+        return trim(base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $plain, MCRYPT_MODE_ECB, $this->initVector)));
     }
 
     /**
@@ -36,6 +36,6 @@ class AES256Encryptor implements EncryptorInterface
      */
     public function decrypt($encrypted, $key)
     {
-        return mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($encrypted), MCRYPT_MODE_ECB, $this->initVector);
+        return trim(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5($key), base64_decode($encrypted), MCRYPT_MODE_ECB, $this->initVector));
     }
 }
