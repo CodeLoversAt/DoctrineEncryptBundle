@@ -27,7 +27,7 @@ class CodeLoversDoctrineEncryptExtension extends Extension
 
         if ('orm' === $config['driver']) {
             $definition = $container->getDefinition('code_lovers_doctrine_encrypt.listener.orm');
-            $definition->addTag('doctrine.event_listener');
+            $definition->addTag('doctrine.event_subscriber');
         } elseif ('odm' === $config['driver']) {
             $definition = $container->getDefinition('code_lovers_doctrine_encrypt.listener.odm');
             $definition->addTag('doctrine_mongodb.odm.event_subscriber');
