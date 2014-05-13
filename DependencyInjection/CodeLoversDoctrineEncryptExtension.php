@@ -24,5 +24,17 @@ class CodeLoversDoctrineEncryptExtension extends Extension
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+
+        if ('orm' === $config['driver']) {
+            $definition = $container->getDefinition('code_lovers_doctrine_encrypt.listener.orm');
+            $definition->addTag('doctrine.event_listener');
+        } elseif ('odm' === $config['driver']) {
+            $definition = $container->getDefinition('code_lovers_doctrine_encrypt.listener.odm');
+            $definition->addTag('doctrine_mongodb.odm.event_subscriber');
+        } else {
+            throw new \RuntimeException('unknown driver: ' . $config['driver']);
+        }
+
+        $definition->addArgument($config['secret']);
     }
 }

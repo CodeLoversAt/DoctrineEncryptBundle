@@ -1,7 +1,16 @@
 parameters:
-#    code_lovers_doctrine_encrypt.example.class: CodeLovers\DoctrineEncryptBundle\Example
+    code_lovers_doctrine_encrypt.listener.orm.class: CodeLovers\DoctrineEncryptBundle\Subscriber\ORMEncryptionSubscriber
+    code_lovers_doctrine_encrypt.listener.odm.class: CodeLovers\DoctrineEncryptBundle\Subscriber\ODMEncryptionSubscriber
+    code_lovers_doctrine_encrypt.encryptor.aes256.class: CodeLovers\DoctrineEncryptBundle\Encryptor\AES256Encryptor
 
 services:
-#    code_lovers_doctrine_encrypt.example:
-#        class: %code_lovers_doctrine_encrypt.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    code_lovers_doctrine_encrypt.encryptor.aes256:
+        class: %code_lovers_doctrine_encrypt.encryptor.aes256.class%
+
+    code_lovers_doctrine_encrypt.listener.orm:
+        class: %code_lovers_doctrine_encrypt.listener.orm.class%
+        arguments: [@code_lovers_doctrine_encrypt.encryptor.aes256, @reader]
+
+    code_lovers_doctrine_encrypt.listener.odm:
+        class: %code_lovers_doctrine_encrypt.listener.odm.class%
+        arguments: [@code_lovers_doctrine_encrypt.encryptor.aes256, @reader]
