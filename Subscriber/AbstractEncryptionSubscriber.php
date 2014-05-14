@@ -69,6 +69,10 @@ abstract class AbstractEncryptionSubscriber implements EventSubscriber
     {
         $reflectionClass = new \ReflectionClass($object);
 
+        if (0 === strpos($reflectionClass->getName(), 'Proxies\\')) {
+            $reflectionClass = $reflectionClass->getParentClass();
+        }
+
         $annotation = $this->reader->getClassAnnotation($reflectionClass, self::ANNOTATION_ENCRYPTED_ENTITY);
 
         if (null !== $annotation) {
