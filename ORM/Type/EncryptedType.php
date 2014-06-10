@@ -49,12 +49,12 @@ class EncryptedType extends Type
         return TypeName::ENCRYPTED_TYPE_NAME;
     }
 
-    public function convertToDatabaseValue($value)
+    public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         return $this->encryptor->encrypt($value, $this->secret);
     }
 
-    public function convertToPHPValue($value)
+    public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         return $this->encryptor->decrypt($value, $this->secret);
     }
