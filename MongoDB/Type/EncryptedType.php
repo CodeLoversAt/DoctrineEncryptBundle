@@ -35,6 +35,11 @@ class EncryptedType extends Type
         return $this->encryptor->decrypt($value, $this->secret);
     }
 
+    public function closureToPHP()
+    {
+        return '$return Type::getType(\'cl_encrypted\')->convertToPHPValue($value);';
+    }
+
     /**
      * @param \CodeLovers\DoctrineEncryptBundle\Encryptor\EncryptorInterface $encryptor
      *
