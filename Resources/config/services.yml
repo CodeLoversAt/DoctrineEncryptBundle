@@ -10,8 +10,8 @@ services:
 
     code_lovers_doctrine_encrypt.listener.orm:
         class: %code_lovers_doctrine_encrypt.listener.orm.class%
-        arguments: [@code_lovers_doctrine_encrypt.encryptor.aes256, @annotation_reader]
+        arguments: [@code_lovers.encryptor, @annotation_reader]
 
     code_lovers_doctrine_encrypt.listener.odm:
         class: %code_lovers_doctrine_encrypt.listener.odm.class%
-        arguments: [@code_lovers_doctrine_encrypt.encryptor.aes256, @annotation_reader]
+        arguments: [@code_lovers.encryptor, @annotation_reader]

@@ -23,16 +23,9 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
 
-                ->scalarNode('driver')
-                    ->defaultValue('orm')
-                    ->isRequired()
-                    ->validate()
-                    ->ifNotInArray(array('odm', 'orm'))
-                        ->thenInvalid('Invalid driver "%s"')
-                    ->end()
-                ->end()
-
                 ->scalarNode('secret')->cannotBeEmpty()->isRequired()->end()
+
+                ->scalarNode('encryptor')->defaultValue('code_lovers_doctrine_encrypt.encryptor.aes256')->end()
 
             ->end();
 
