@@ -16,7 +16,7 @@ class CodeLoversDoctrineEncryptBundle extends Bundle
         }
 
         if (class_exists('Doctrine\DBAL\Types\Type')) {
-            \Doctrine\DBAL\Types\Type::addType(TypeName::ENCRYPTED_TYPE_NAME, 'CodeLovers\DoctrineEncryptBundle\ORM\Type');
+            \Doctrine\DBAL\Types\Type::addType(TypeName::ENCRYPTED_TYPE_NAME, 'CodeLovers\DoctrineEncryptBundle\ORM\Type\EncryptedType');
             $this->hasORM = true;
         }
     }
