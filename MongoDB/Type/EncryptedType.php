@@ -37,7 +37,7 @@ class EncryptedType extends Type
 
     public function closureToPHP()
     {
-        return '$return Type::getType(\'cl_encrypted\')->convertToPHPValue($value);';
+        return '$return = \\Doctrine\\ODM\\MongoDB\\Types\\Type::getType(\'cl_encrypted\')->convertToPHPValue($value);';
     }
 
     /**
