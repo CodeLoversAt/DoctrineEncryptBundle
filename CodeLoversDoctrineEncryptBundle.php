@@ -10,7 +10,7 @@ class CodeLoversDoctrineEncryptBundle extends Bundle
     private $hasORM = false;
     public function __construct()
     {
-        if (class_exists('Doctrine\ODM\MongoDB\Mapping\Types\Type')) {
+        if (class_exists('Doctrine\ODM\MongoDB\Types\Type')) {
             \Doctrine\ODM\MongoDB\Types\Type::registerType(TypeName::ENCRYPTED_TYPE_NAME, 'CodeLovers\DoctrineEncryptBundle\MongoDB\Type\EncryptedType');
             $this->hasMongoDb = true;
         }
