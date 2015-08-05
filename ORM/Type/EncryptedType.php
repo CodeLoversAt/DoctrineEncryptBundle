@@ -13,9 +13,9 @@ namespace CodeLovers\DoctrineEncryptBundle\ORM\Type;
 use CodeLovers\DoctrineEncryptBundle\Encryptor\EncryptorInterface;
 use CodeLovers\DoctrineEncryptBundle\TypeName;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Doctrine\DBAL\Types\Type;
+use Doctrine\DBAL\Types\TextType;
 
-class EncryptedType extends Type
+class EncryptedType extends TextType
 {
 
     /**
@@ -27,19 +27,6 @@ class EncryptedType extends Type
      * @var string
      */
     private $secret;
-
-    /**
-     * Gets the SQL declaration snippet for a field of this type.
-     *
-     * @param array $fieldDeclaration                             The field declaration.
-     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform The currently used database platform.
-     *
-     * @return string
-     */
-    public function getSQLDeclaration(array $fieldDeclaration, AbstractPlatform $platform)
-    {
-        return 'TEXT';
-    }
 
     /**
      * {@inheritDoc}

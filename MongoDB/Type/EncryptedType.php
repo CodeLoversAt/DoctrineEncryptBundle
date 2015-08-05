@@ -11,9 +11,9 @@ namespace CodeLovers\DoctrineEncryptBundle\MongoDB\Type;
 
 
 use CodeLovers\DoctrineEncryptBundle\Encryptor\EncryptorInterface;
-use Doctrine\ODM\MongoDB\Types\Type;
+use Doctrine\DBAL\Types\StringType;
 
-class EncryptedType extends Type
+class EncryptedType extends StringType
 {
     /**
      * @var EncryptorInterface
