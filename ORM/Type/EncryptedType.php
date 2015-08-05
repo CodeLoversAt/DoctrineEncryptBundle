@@ -69,4 +69,19 @@ class EncryptedType extends TextType
 
         return $this;
     }
+
+    /**
+     * If this Doctrine Type maps to an already mapped database type,
+     * reverse schema engineering can't take them apart. You need to mark
+     * one of those types as commented, which will have Doctrine use an SQL
+     * comment to typehint the actual Doctrine Type.
+     *
+     * @param \Doctrine\DBAL\Platforms\AbstractPlatform $platform
+     *
+     * @return boolean
+     */
+    public function requiresSQLCommentHint(AbstractPlatform $platform)
+    {
+        return true;
+    }
 }
